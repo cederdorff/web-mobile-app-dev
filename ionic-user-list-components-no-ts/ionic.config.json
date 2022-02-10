@@ -1,0 +1,7 @@
+{
+    "name": "ionic-user-list-no-ts",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "react"
+}
