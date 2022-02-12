@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-    IonContent,
-    IonHeader,
-    IonList,
-    IonPage,
-    IonRefresher,
-    IonRefresherContent,
-    IonTitle,
-    IonToolbar
-} from "@ionic/react";
-import { UserListItem } from "../components/UserListItem";
+import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar } from "@ionic/react";
+import UserListItem from "../components/UserListItem";
 import userService from "../services/usersService";
 
-const Users: React.FC = () => {
-    const [users, setUsers] = useState<any[]>([]);
+export default function UsersPage() {
+    const [users, setUsers] = useState([]);
 
     async function loadUsers() {
         const userData = await userService.getUsers();
@@ -24,7 +15,7 @@ const Users: React.FC = () => {
         loadUsers();
     }, []);
 
-    async function refresh(e: CustomEvent) {
+    async function refresh(e) {
         const userData = await userService.fetchUsers();
         setUsers(userData);
         setTimeout(() => {
@@ -58,6 +49,4 @@ const Users: React.FC = () => {
             </IonContent>
         </IonPage>
     );
-};
-
-export default Users;
+}

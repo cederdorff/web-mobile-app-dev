@@ -1,13 +1,14 @@
 import userService from "./usersService";
-
 class PostService {
+    #url;
+    #posts;
+
     constructor() {
         this.url = "https://raw.githubusercontent.com/cederdorff/web-mobile-app-dev/main/data/posts.json";
         this.posts = [];
     }
 
     async fetchPosts() {
-        console.log("Fetch Posts");
         const response = await fetch(this.url);
         let posts = await response.json();
         this.posts = posts;
@@ -30,7 +31,6 @@ class PostService {
         const postsWithUser = this.posts.map(post => {
             const user = users.find(user => user.id === post.uid);
             post = { ...post, user: user }; // combine objects with spread operator
-            delete post.uid; // delete uid - it's inside post.user.id
             return post;
         });
         return postsWithUser;
@@ -40,7 +40,7 @@ class PostService {
         if (this.posts.length === 0) {
             await this.fetchPosts();
         }
-        const postData = this.posts.find(p => p.id === parseInt(id));
+        const postData = this.posts.find(p => p.id === id);
         return postData;
     }
 
@@ -48,7 +48,7 @@ class PostService {
         if (this.posts.length === 0) {
             await this.fetchPosts();
         }
-        const postData = this.posts.filter(p => p.uid === parseInt(uid));
+        const postData = this.posts.filter(p => p.uid === uid);
         return postData;
     }
 }

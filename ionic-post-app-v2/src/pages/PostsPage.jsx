@@ -1,21 +1,14 @@
-import {
-    IonContent,
-    IonHeader,
-    IonList,
-    IonPage,
-    IonRefresher,
-    IonRefresherContent,
-    IonTitle,
-    IonToolbar
-} from "@ionic/react";
+import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar } from "@ionic/react";
 import { useEffect, useState } from "react";
-import { PostListItem } from "../components/PostListItem";
+import PostListItem from "../components/PostListItem";
 import postService from "../services/postsService";
+import "./PostsPage.css";
 
-const Posts: React.FC = () => {
-    const [posts, setPosts] = useState<any[]>([]);
+export default function PostsPage() {
+    const [posts, setPosts] = useState([]);
+
     async function loadPosts() {
-        const data = await postService.getPosts();
+        const data = await postService.getPostsWithUserDetails();
         setPosts(data);
     }
 
@@ -23,16 +16,15 @@ const Posts: React.FC = () => {
         loadPosts();
     }, []);
 
-    async function refresh(e: CustomEvent) {
-        const data = await postService.fetchPosts();
-        setPosts(data);
+    async function refresh(e) {
+        await loadPosts();
         setTimeout(() => {
             e.detail.complete();
         }, 1000);
     }
 
     return (
-        <IonPage>
+        <IonPage className="posts-page">
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Posts</IonTitle>
@@ -57,6 +49,4 @@ const Posts: React.FC = () => {
             </IonContent>
         </IonPage>
     );
-};
-
-export default Posts;
+}

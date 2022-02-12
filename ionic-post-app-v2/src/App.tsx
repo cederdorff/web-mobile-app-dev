@@ -1,39 +1,26 @@
-import { Redirect, Route } from "react-router-dom";
-import {
-    IonApp,
-    IonIcon,
-    IonLabel,
-    IonRouterOutlet,
-    IonTabBar,
-    IonTabButton,
-    IonTabs,
-    setupIonicReact
-} from "@ionic/react";
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { addCircle, people, reader } from "ionicons/icons";
-import Posts from "./pages/Posts";
-import Users from "./pages/Users";
-import Add from "./pages/Add";
-
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
-
+import "@ionic/react/css/display.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/float-elements.css";
 /* Basic CSS for apps built with Ionic */
 import "@ionic/react/css/normalize.css";
-import "@ionic/react/css/structure.css";
-import "@ionic/react/css/typography.css";
-
 /* Optional CSS utils that can be commented out */
 import "@ionic/react/css/padding.css";
-import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/structure.css";
 import "@ionic/react/css/text-alignment.css";
 import "@ionic/react/css/text-transformation.css";
-import "@ionic/react/css/flex-utils.css";
-import "@ionic/react/css/display.css";
-
+import "@ionic/react/css/typography.css";
+import { addCircle, people, reader } from "ionicons/icons";
+import { Redirect, Route } from "react-router-dom";
+import AddPage from "./pages/AddPage";
+import PostsPage from "./pages/PostsPage";
+import UserPage from "./pages/UserPage";
+import UsersPage from "./pages/UsersPage";
 /* Theme variables */
 import "./theme/variables.css";
-import User from "./pages/User";
 
 setupIonicReact();
 
@@ -43,16 +30,16 @@ const App: React.FC = () => (
             <IonTabs>
                 <IonRouterOutlet>
                     <Route exact path="/posts">
-                        <Posts />
+                        <PostsPage />
                     </Route>
                     <Route exact path="/users">
-                        <Users />
+                        <UsersPage />
                     </Route>
                     <Route path="/users/:id">
-                        <User />
+                        <UserPage />
                     </Route>
                     <Route path="/add">
-                        <Add />
+                        <AddPage />
                     </Route>
                     <Route exact path="/">
                         <Redirect to="/posts" />

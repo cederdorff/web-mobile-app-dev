@@ -1,11 +1,13 @@
 class UserService {
+    #url;
+    #users;
+
     constructor() {
         this.url = "https://raw.githubusercontent.com/cederdorff/web-mobile-app-dev/main/data/users.json";
         this.users = [];
     }
 
     async fetchUsers() {
-        console.log("Fetch Users");
         const response = await fetch(this.url);
         let users = await response.json();
         users = this.sortByName(users);
@@ -24,7 +26,7 @@ class UserService {
         if (this.users.length === 0) {
             await this.fetchUsers();
         }
-        const userData = this.users.find(user => user.id === parseInt(id));
+        const userData = this.users.find(user => user.id == id);
         return userData;
     }
 

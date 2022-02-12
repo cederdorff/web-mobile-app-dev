@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 
-const Add: React.FC = () => {
+export default function AddPage() {
     return (
         <IonPage>
             <IonHeader>
@@ -17,6 +17,4 @@ const Add: React.FC = () => {
             </IonContent>
         </IonPage>
     );
-};
-
-export default Add;
+}
