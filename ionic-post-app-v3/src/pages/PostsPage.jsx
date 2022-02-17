@@ -28,7 +28,7 @@ export default function PostsPage() {
         <IonPage className="posts-page">
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Hi!</IonTitle>
+                    <IonTitle>Posts</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
@@ -38,7 +38,7 @@ export default function PostsPage() {
 
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Hi Web dev</IonTitle>
+                        <IonTitle size="large">Posts</IonTitle>
                     </IonToolbar>
                 </IonHeader>
 
