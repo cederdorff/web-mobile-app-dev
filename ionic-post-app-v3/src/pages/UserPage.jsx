@@ -24,7 +24,7 @@ export default function UserPage() {
             <IonHeader translucent>
                 <IonToolbar>
                     <IonButtons slot="start">
-                        <IonBackButton text="Users" defaultHref="/users"></IonBackButton>
+                        <IonBackButton text="Back" defaultHref="/users"></IonBackButton>
                     </IonButtons>
                     <IonTitle>{user.name}</IonTitle>
                 </IonToolbar>
