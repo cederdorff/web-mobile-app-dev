@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar } from "@ionic/react";
+import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, useIonViewWillEnter } from "@ionic/react";
 import { useEffect, useState } from "react";
 import PostListItem from "../components/PostListItem";
 import postService from "../services/postsService";
@@ -12,9 +12,10 @@ export default function PostsPage() {
         setPosts(data);
     }
 
-    useEffect(() => {
+    useIonViewWillEnter(() => {
+        console.log("ionViewWillEnter event fired");
         loadPosts();
-    }, []);
+    });
 
     async function refresh(e) {
         await loadPosts();
@@ -27,7 +28,7 @@ export default function PostsPage() {
         <IonPage className="posts-page">
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Posts</IonTitle>
+                    <IonTitle>Hi!</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
@@ -37,7 +38,7 @@ export default function PostsPage() {
 
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Posts</IonTitle>
+                        <IonTitle size="large">Hi Web dev</IonTitle>
                     </IonToolbar>
                 </IonHeader>
 
