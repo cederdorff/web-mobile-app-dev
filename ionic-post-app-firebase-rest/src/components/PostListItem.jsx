@@ -1,11 +1,17 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg } from "@ionic/react";
-import UserListItem from "./UserListItem";
-import "./PostListItem.css";
+import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg, IonItem } from "@ionic/react";
+import UserDetail from "./UserListItem";
 
-export default function PostListItem({ post }) {
+import "./PostListItem.css";
+import PostActions from "./PostActions";
+
+export default function PostListItem({ post, reload }) {
     return (
         <IonCard>
-            <UserListItem userId={post.uid} />
+            <IonItem>
+                <UserDetail userId={post.uid} />
+                <PostActions post={post} reload={reload} />
+            </IonItem>
+
             <IonImg className="post-img" src={post.image} />
             <IonCardHeader>
                 <IonCardTitle>

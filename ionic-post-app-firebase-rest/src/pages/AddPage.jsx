@@ -15,7 +15,7 @@ export default function AddPage() {
         });
         const data = await response.json();
         console.log(data);
-        history.push("/posts");
+        history.replace("/posts");
     }
 
     return (

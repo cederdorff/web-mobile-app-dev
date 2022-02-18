@@ -19,6 +19,7 @@ export default function PostsPage() {
             e.detail.complete();
         }, 1000);
     }
+
     useIonViewWillEnter(() => {
         loadPosts();
     });
@@ -43,7 +44,7 @@ export default function PostsPage() {
 
                 <IonList>
                     {posts.map(post => (
-                        <PostListItem post={post} key={post.id} />
+                        <PostListItem post={post} key={post.id} reload={loadPosts} />
                     ))}
                 </IonList>
             </IonContent>
