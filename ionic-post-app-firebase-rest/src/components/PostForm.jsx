@@ -1,7 +1,7 @@
 import { IonItem, IonLabel, IonInput, IonTextarea, IonImg, IonButton } from "@ionic/react";
 import { useState, useEffect } from "react";
 
-const PostForm = ({ post, handleSubmit }) => {
+export default function PostForm({ post, handleSubmit }) {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [image, setImage] = useState("");
@@ -37,13 +37,11 @@ const PostForm = ({ post, handleSubmit }) => {
             </IonItem>
             <IonItem>
                 <IonLabel position="stacked">Image Preview</IonLabel>
-                <IonImg src={image === "" ? fallbackUrl : image} />
+                <IonImg className="ion-padding" src={image === "" ? fallbackUrl : image} />
             </IonItem>
             <IonButton type="submit" expand="block">
                 Create
             </IonButton>
         </form>
     );
-};
-
-export default PostForm;
+}
