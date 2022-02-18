@@ -1,5 +1,5 @@
 import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, useIonViewWillEnter } from "@ionic/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PostListItem from "../components/PostListItem";
 import postService from "../services/postsService";
 import "./PostsPage.css";
