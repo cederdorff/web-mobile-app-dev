@@ -1,8 +1,7 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg } from "@ionic/react";
 import UserListItem from "./UserListItem";
 
-const PostListItem = ({ post }) => {
-    console.log(post.uid);
+export default function PostListItem({ post }) {
     return (
         <IonCard>
             <UserListItem userId={post.uid} />
@@ -15,6 +14,4 @@ const PostListItem = ({ post }) => {
             <IonCardContent>{post.body}</IonCardContent>
         </IonCard>
     );
-};
-
-export default PostListItem;
+}
