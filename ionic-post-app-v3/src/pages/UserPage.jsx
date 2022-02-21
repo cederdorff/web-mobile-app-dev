@@ -1,5 +1,5 @@
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonLabel, IonList, IonListHeader, IonPage, IonTitle, IonToolbar, useIonViewWillEnter } from "@ionic/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import PostListItem from "../components/PostListItem";
 import UserCard from "../components/UserCard";
@@ -12,11 +12,15 @@ export default function UserPage() {
     const params = useParams();
     const userId = parseInt(params.id);
 
-    useIonViewWillEnter(async () => {
+    async function loadData() {
         const userData = await userService.getUser(userId);
         setUser(userData);
         const postsData = await postService.getPostsByUser(userId);
         setPosts(postsData);
+    }
+
+    useIonViewWillEnter(() => {
+        loadData();
     });
 
     return (
