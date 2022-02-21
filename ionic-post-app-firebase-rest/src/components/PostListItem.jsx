@@ -1,6 +1,5 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonImg, IonItem } from "@ionic/react";
-import UserDetail from "./UserListItem";
-
+import UserDetail from "./UserDetail";
 import "./PostListItem.css";
 import PostActions from "./PostActions";
 

@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 
 export default function UserDetail({ userId }) {
     const [user, setUser] = useState({});
-    const url = `https://race-rest-default-rtdb.firebaseio.com/users/${userId}.json`;
 
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setUser(data));
-    }, [url]);
+        async function loadUserData() {
+            const response = await fetch(`https://race-rest-default-rtdb.firebaseio.com/users/${userId}.json`);
+            const data = await response.json();
+            setUser(data);
+        }
+        loadUserData();
+    }, [userId]);
 
     return (
         <>

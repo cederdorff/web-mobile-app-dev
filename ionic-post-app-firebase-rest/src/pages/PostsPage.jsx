@@ -13,6 +13,7 @@ export default function PostsPage() {
         const postsArray = Object.keys(data).map(key => ({ id: key, ...data[key] })); // from object to array
         setPosts(postsArray.reverse());
     }
+
     async function refresh(e) {
         await loadPosts();
         setTimeout(() => {

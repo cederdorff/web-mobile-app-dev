@@ -1,22 +1,30 @@
-import { IonButton, IonIcon, useIonAlert, useIonActionSheet } from "@ionic/react";
+import { IonButton, IonIcon, useIonAlert, useIonActionSheet, useIonModal } from "@ionic/react";
 import { ellipsisHorizontalOutline } from "ionicons/icons";
+import PostUpdateModal from "./PostUpdateModal";
 
 export default function PostActions({ post, reload }) {
     const [presentActionSheet] = useIonActionSheet();
     const [presentDeleteDialog] = useIonAlert();
+    const [presentUpdateModal, dismissUpdateModal] = useIonModal(<PostUpdateModal post={post} dismiss={closeUpdateModal} />);
 
     function showActionSheet(event) {
         event.preventDefault();
         presentActionSheet({
             buttons: [
-                { text: "Edit", handler: goToUpdate },
+                { text: "Edit", handler: showUpdateModal },
                 { text: "Delete", role: "destructive", handler: showDeleteDialog },
                 { text: "Cancel", role: "cancel" }
             ]
         });
     }
-    function goToUpdate() {
+    function showUpdateModal() {
         console.log("Update post");
+        presentUpdateModal();
+    }
+
+    function closeUpdateModal() {
+        dismissUpdateModal();
+        reload();
     }
 
     function showDeleteDialog() {
@@ -35,8 +43,10 @@ export default function PostActions({ post, reload }) {
         reload();
     }
     return (
-        <IonButton fill="clear" onClick={showActionSheet}>
-            <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
-        </IonButton>
+        <>
+            <IonButton fill="clear" onClick={showActionSheet}>
+                <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
+            </IonButton>
+        </>
     );
 }
