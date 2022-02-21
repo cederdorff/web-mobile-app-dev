@@ -13,7 +13,6 @@ export default function PostsPage() {
     }
 
     useIonViewWillEnter(() => {
-        console.log("ionViewWillEnter event fired");
         loadPosts();
     });
 
