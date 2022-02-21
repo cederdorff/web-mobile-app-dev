@@ -1,5 +1,7 @@
-import { IonItem, IonLabel, IonInput, IonTextarea, IonImg, IonButton } from "@ionic/react";
+import { IonItem, IonLabel, IonInput, IonTextarea, IonImg, IonButton, IonIcon } from "@ionic/react";
 import { useState, useEffect } from "react";
+import { Camera, CameraResultType } from "@capacitor/camera";
+import { camera } from "ionicons/icons";
 
 export default function PostForm({ post, handleSubmit }) {
     const [title, setTitle] = useState("");
@@ -21,6 +23,22 @@ export default function PostForm({ post, handleSubmit }) {
         const formData = { title: title, body: body, image: image };
         handleSubmit(formData);
     }
+
+    async function takePicture() {
+        const image = await Camera.getPhoto({
+            quality: 90,
+            allowEditing: true,
+            resultType: CameraResultType.DataUrl
+        });
+
+        // image.webPath will contain a path that can be set as an image src.
+        // You can access the original file using image.path, which can be
+        // passed to the Filesystem API to read the raw data of the image,
+        // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
+        const imageUrl = image.dataUrl;
+        console.log(image);
+        setImage(imageUrl);
+    }
     return (
         <form onSubmit={submitEvent}>
             <IonItem>
@@ -32,12 +50,11 @@ export default function PostForm({ post, handleSubmit }) {
                 <IonTextarea value={body} placeholder="Tell us about your image" onIonChange={e => setBody(e.target.value)}></IonTextarea>
             </IonItem>
             <IonItem>
-                <IonLabel position="stacked">Image URL</IonLabel>
-                <IonInput value={image} type="url" placeholder="Paste url to your image" onIonChange={e => setImage(e.target.value)} />
-            </IonItem>
-            <IonItem>
-                <IonLabel position="stacked">Image Preview</IonLabel>
-                <IonImg className="ion-padding" src={image === "" ? fallbackUrl : image} />
+                <IonLabel position="stacked">Choose Image</IonLabel>
+                <IonButton expand="block" onClick={takePicture}>
+                    <IonIcon slot="icon-only" icon={camera} />
+                </IonButton>
+                {image && <IonImg className="ion-padding" src={image === "" ? fallbackUrl : image} />}
             </IonItem>
             <IonButton type="submit" expand="block">
                 Create
