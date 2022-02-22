@@ -5,7 +5,9 @@ import PostUpdateModal from "./PostUpdateModal";
 export default function PostActions({ post, reload }) {
     const [presentActionSheet] = useIonActionSheet();
     const [presentDeleteDialog] = useIonAlert();
-    const [presentUpdateModal, dismissUpdateModal] = useIonModal(<PostUpdateModal post={post} dismiss={closeUpdateModal} />);
+    const [presentUpdateModal, dismissUpdateModal] = useIonModal(
+        <PostUpdateModal post={post} dismiss={closeUpdateModal} />
+    );
 
     function showActionSheet(event) {
         event.preventDefault();
@@ -30,7 +32,7 @@ export default function PostActions({ post, reload }) {
     function showDeleteDialog() {
         presentDeleteDialog({
             header: "Delete Post",
-            message: "Do you want do delete post?",
+            message: "Do you want to delete post?",
             buttons: [{ text: "No" }, { text: "Yes", role: "destructive", handler: deletePost }]
         });
     }
