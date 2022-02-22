@@ -1,0 +1,7 @@
+{
+  "name": "ionic-post-app-firebase-rest",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
