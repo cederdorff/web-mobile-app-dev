@@ -1,17 +1,20 @@
-import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, useIonViewWillEnter } from "@ionic/react";
+import { IonContent, IonHeader, IonList, IonPage, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, useIonViewWillEnter, useIonLoading } from "@ionic/react";
 import { useState } from "react";
 import PostListItem from "../components/PostListItem";
 import "./PostsPage.css";
 
 export default function PostsPage() {
     const [posts, setPosts] = useState([]);
+    const [showLoader, dismissLoader] = useIonLoading();
 
     async function loadPosts() {
+        showLoader();
         const url = "https://race-rest-default-rtdb.firebaseio.com/posts.json";
         const response = await fetch(url);
         const data = await response.json();
         const postsArray = Object.keys(data).map(key => ({ id: key, ...data[key] })); // from object to array
         setPosts(postsArray.reverse());
+        dismissLoader();
     }
 
     async function refresh(e) {

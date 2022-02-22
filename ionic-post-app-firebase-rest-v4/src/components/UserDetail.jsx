@@ -1,8 +1,10 @@
 import { IonLabel, IonAvatar, IonImg } from "@ionic/react";
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function UserDetail({ userId }) {
     const [user, setUser] = useState({});
+    const history = useHistory();
 
     useEffect(() => {
         async function loadUserData() {
@@ -13,12 +15,16 @@ export default function UserDetail({ userId }) {
         loadUserData();
     }, [userId]);
 
+    function goToUserDetailView() {
+        history.push(`users/${userId}`);
+    }
+
     return (
         <>
-            <IonAvatar slot="start">
+            <IonAvatar slot="start" onClick={goToUserDetailView}>
                 <IonImg src={user.image} />
             </IonAvatar>
-            <IonLabel>
+            <IonLabel onClick={goToUserDetailView}>
                 <h2>{user.name}</h2>
                 <p>{user.title}</p>
             </IonLabel>

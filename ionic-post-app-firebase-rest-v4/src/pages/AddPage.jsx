@@ -1,6 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import PostForm from "../components/PostForm";
+import { Toast } from "@capacitor/toast";
 
 export default function AddPage() {
     const history = useHistory();
@@ -15,7 +16,12 @@ export default function AddPage() {
         });
         const data = await response.json();
         console.log(data);
+
         history.replace("/posts");
+
+        await Toast.show({
+            text: "New post created!"
+        });
     }
 
     return (

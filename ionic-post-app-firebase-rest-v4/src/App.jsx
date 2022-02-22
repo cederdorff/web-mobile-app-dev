@@ -23,6 +23,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import UserPage from "./pages/UserPage";
 
 setupIonicReact();
 
@@ -37,6 +38,9 @@ export default function App() {
                         </Route>
                         <Route exact path="/add">
                             <AddPage />
+                        </Route>
+                        <Route path="/users/:id">
+                            <UserPage />
                         </Route>
                         <Route exact path="/">
                             <Redirect to="/posts" />

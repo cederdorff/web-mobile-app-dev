@@ -1,6 +1,7 @@
 import { IonButton, IonIcon, useIonAlert, useIonActionSheet, useIonModal } from "@ionic/react";
 import { ellipsisHorizontalOutline } from "ionicons/icons";
 import PostUpdateModal from "./PostUpdateModal";
+import { Toast } from "@capacitor/toast";
 
 export default function PostActions({ post, reload }) {
     const [presentActionSheet] = useIonActionSheet();
@@ -40,7 +41,12 @@ export default function PostActions({ post, reload }) {
             method: "DELETE"
         });
         console.log(response);
+
         reload();
+
+        await Toast.show({
+            text: "Post deleted!"
+        });
     }
     return (
         <IonButton fill="clear" onClick={showActionSheet}>
