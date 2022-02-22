@@ -43,10 +43,8 @@ export default function PostActions({ post, reload }) {
         reload();
     }
     return (
-        <>
-            <IonButton fill="clear" onClick={showActionSheet}>
-                <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
-            </IonButton>
-        </>
+        <IonButton fill="clear" onClick={showActionSheet}>
+            <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
+        </IonButton>
     );
 }
