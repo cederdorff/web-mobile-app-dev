@@ -18,7 +18,6 @@ export default function PostActions({ post, reload }) {
         });
     }
     function showUpdateModal() {
-        console.log("Update post");
         presentUpdateModal();
     }
 
@@ -34,6 +33,7 @@ export default function PostActions({ post, reload }) {
             buttons: [{ text: "No" }, { text: "Yes", role: "destructive", handler: deletePost }]
         });
     }
+
     async function deletePost() {
         const url = `https://race-rest-default-rtdb.firebaseio.com/posts/${post.id}.json`;
         const response = await fetch(url, {
@@ -43,10 +43,8 @@ export default function PostActions({ post, reload }) {
         reload();
     }
     return (
-        <>
-            <IonButton fill="clear" onClick={showActionSheet}>
-                <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
-            </IonButton>
-        </>
+        <IonButton fill="clear" onClick={showActionSheet}>
+            <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
+        </IonButton>
     );
 }
