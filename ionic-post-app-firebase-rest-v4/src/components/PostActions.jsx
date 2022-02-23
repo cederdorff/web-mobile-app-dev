@@ -47,9 +47,11 @@ export default function PostActions({ post, reload }) {
         reload();
 
         await Toast.show({
-            text: "Post deleted!"
+            text: "New post created!",
+            position: "center"
         });
     }
+
     return (
         <IonButton fill="clear" onClick={showActionSheet}>
             <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />

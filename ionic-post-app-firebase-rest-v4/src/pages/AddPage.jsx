@@ -20,7 +20,8 @@ export default function AddPage() {
         history.replace("/posts");
 
         await Toast.show({
-            text: "New post created!"
+            text: "New post created!",
+            position: "center"
         });
     }
 
