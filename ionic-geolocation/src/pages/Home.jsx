@@ -17,7 +17,9 @@ const Home = () => {
 
     async function getLocation(latitude, longitude) {
         const key = "14de60fd94d4d8753fe8a277ba88667a";
-        const res = await fetch(`http://api.positionstack.com/v1/reverse?access_key=${key}&output=json&query=${latitude},${longitude}`);
+        const res = await fetch(
+            `http://api.positionstack.com/v1/reverse?access_key=${key}&output=json&query=${latitude},${longitude}`
+        );
         const result = await res.json();
         console.log(result);
         const loc = result.data[0];
@@ -32,13 +34,13 @@ const Home = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Blank</IonTitle>
+                    <IonTitle>Geolocation</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">Blank</IonTitle>
+                        <IonTitle size="large">Geolocation</IonTitle>
                     </IonToolbar>
                 </IonHeader>
                 <IonItem>
