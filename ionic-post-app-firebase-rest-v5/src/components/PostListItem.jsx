@@ -7,7 +7,7 @@ export default function PostListItem({ post, reload }) {
     return (
         <IonCard>
             <IonItem lines="none">
-                <UserDetail userId={post.uid} />
+                <UserDetail user={post.user} />
                 <PostActions post={post} reload={reload} />
             </IonItem>
             <IonImg className="post-img" src={post.image} />
