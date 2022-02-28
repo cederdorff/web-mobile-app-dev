@@ -1,12 +1,28 @@
-import { IonButton, IonHeader, IonToolbar, IonTitle, IonButtons, IonContent } from "@ionic/react";
+import { IonButton, IonHeader, IonToolbar, IonTitle, IonButtons, IonContent, useIonLoading } from "@ionic/react";
 import PostForm from "./PostForm";
 import { getPostRef } from "../firebase-config";
 import { update } from "firebase/database";
+import { storage } from "../firebase-config";
+import { uploadString, ref, getDownloadURL } from "@firebase/storage";
 
 export default function PostUpdateModal({ post, dismiss }) {
+    const [showLoader, dismissLoader] = useIonLoading();
+
     async function updatePost(postToUpdate) {
+        showLoader();
+        const imageUrl = await uploadImage(postToUpdate.image, post.id);
+        postToUpdate.image = imageUrl;
         await update(getPostRef(post.id), postToUpdate);
         dismiss();
+        dismissLoader();
+    }
+
+    async function uploadImage(image, postKey) {
+        const newImageRef = ref(storage, `${postKey}.${image.format}`);
+        console.log(newImageRef);
+        await uploadString(newImageRef, image.dataUrl, "data_url");
+        const url = await getDownloadURL(newImageRef);
+        return url;
     }
 
     return (
