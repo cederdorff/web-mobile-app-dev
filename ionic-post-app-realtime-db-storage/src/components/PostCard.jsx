@@ -18,7 +18,8 @@ import { useHistory } from "react-router-dom";
 import { Toast } from "@capacitor/toast";
 import PostUpdateModal from "./PostUpdateModal";
 import { remove } from "@firebase/database";
-import { getPostRef } from "../firebase-config";
+import { getPostRef, storage } from "../firebase-config";
+import { ref, deleteObject } from "@firebase/storage";
 
 export default function PostListItem({ post }) {
     const [presentActionSheet] = useIonActionSheet();
@@ -52,10 +53,14 @@ export default function PostListItem({ post }) {
     }
 
     async function deletePost() {
+        let imageName = post.image.split("/").pop();
+        imageName = imageName.split("?alt")[0];
+        const imageRef = ref(storage, imageName);
+        await deleteObject(imageRef);
         remove(getPostRef(post.id));
 
         await Toast.show({
-            text: "New post deleted!",
+            text: "Post deleted!",
             position: "center"
         });
     }
