@@ -1,0 +1,7 @@
+{
+    "name": "eaaa.race.postapp",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "react"
+}
