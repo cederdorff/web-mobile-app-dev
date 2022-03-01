@@ -38,7 +38,7 @@ export default function PostsPage() {
         const postsArray = await getPosts();
         const users = await getUsers();
         const postsWithUser = postsArray.map(post => {
-            const user = users.find(user => user.id == post.uid);
+            const user = users.find(user => user.id === post.uid);
             post = { ...post, user: user }; // combine objects with spread operator
             return post;
         });
