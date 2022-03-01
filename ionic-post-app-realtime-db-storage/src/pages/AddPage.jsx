@@ -13,7 +13,7 @@ export default function AddPage() {
 
     async function handleSubmit(newPost) {
         showLoader();
-        newPost.uid = 4; // default user id added
+        newPost.uid = "4"; // default user id added
         const newPostRef = push(postsRef); // push new to get reference and new id/key
         const newPostKey = newPostRef.key; // key from reference
         const imageUrl = await uploadImage(newPost.image, newPostKey);

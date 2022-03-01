@@ -30,7 +30,7 @@ export default function UserPage() {
 
         // fetch posts where uid is equal to userId prop
         const postsRes = await fetch(
-            `https://race-rest-default-rtdb.firebaseio.com/posts.json?orderBy="uid"&equalTo=${userId}`
+            `https://race-rest-default-rtdb.firebaseio.com/posts.json?orderBy="uid"&equalTo="${userId}"`
         );
         const postsData = await postsRes.json();
         const postsArray = Object.keys(postsData).map(key => ({ id: key, ...postsData[key], user: userData })); // from object to array
