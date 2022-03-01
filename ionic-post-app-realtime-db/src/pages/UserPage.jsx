@@ -8,10 +8,9 @@ import {
     IonListHeader,
     IonPage,
     IonTitle,
-    IonToolbar,
-    useIonViewWillEnter
+    IonToolbar
 } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import PostListItem from "../components/PostCard";
 import UserCard from "../components/UserCard";
@@ -24,39 +23,39 @@ export default function UserPage() {
     const params = useParams();
     const userId = params.id;
 
-    async function getUserDataOnce() {
-        const snapshot = await get(getUserRef(userId));
-        const userData = snapshot.val();
-        setUser({
-            id: userId,
-            ...userData
-        });
-        return userData;
-    }
-
-    async function listenOnChange() {
-        const postsByUserId = query(postsRef, orderByChild("uid"), equalTo(userId));
-        const userData = await getUserDataOnce();
-
-        onValue(postsByUserId, async snapshot => {
-            const postsArray = [];
-            snapshot.forEach(postSnapshot => {
-                const id = postSnapshot.key;
-                const data = postSnapshot.val();
-                const post = {
-                    id,
-                    ...data,
-                    user: userData
-                };
-                postsArray.push(post);
+    useEffect(() => {
+        async function getUserDataOnce() {
+            const snapshot = await get(getUserRef(userId));
+            const userData = snapshot.val();
+            setUser({
+                id: userId,
+                ...userData
             });
-            setPosts(postsArray.reverse());
-        });
-    }
+            return userData;
+        }
 
-    useIonViewWillEnter(() => {
+        async function listenOnChange() {
+            const postsByUserId = query(postsRef, orderByChild("uid"), equalTo(userId));
+            const userData = await getUserDataOnce();
+
+            onValue(postsByUserId, async snapshot => {
+                const postsArray = [];
+                snapshot.forEach(postSnapshot => {
+                    const id = postSnapshot.key;
+                    const data = postSnapshot.val();
+                    const post = {
+                        id,
+                        ...data,
+                        user: userData
+                    };
+                    postsArray.push(post);
+                });
+                setPosts(postsArray.reverse());
+            });
+        }
+
         listenOnChange();
-    });
+    }, [userId]);
 
     return (
         <IonPage>
