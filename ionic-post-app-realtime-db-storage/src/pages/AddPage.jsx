@@ -29,9 +29,9 @@ export default function AddPage() {
         dismissLoader();
     }
 
-    async function uploadImage(image, postKey) {
-        const newImageRef = ref(storage, `${postKey}.${image.format}`);
-        await uploadString(newImageRef, image.dataUrl, "data_url");
+    async function uploadImage(imageFile, postKey) {
+        const newImageRef = ref(storage, `${postKey}.${imageFile.format}`);
+        await uploadString(newImageRef, imageFile.dataUrl, "data_url");
         const url = await getDownloadURL(newImageRef);
         return url;
     }

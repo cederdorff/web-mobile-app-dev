@@ -33,7 +33,7 @@ export default function PostsPage() {
                 const post = {
                     id,
                     ...data,
-                    user: users.find(user => user.id === data.uid)
+                    user: users.find(user => user.id == data.uid)
                 };
                 postsArray.push(post);
             });
