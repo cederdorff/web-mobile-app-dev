@@ -10,8 +10,13 @@ export default function PostUpdateModal({ post, dismiss }) {
 
     async function updatePost(postToUpdate) {
         showLoader();
-        const imageUrl = await uploadImage(postToUpdate.image, post.id);
-        postToUpdate.image = imageUrl;
+        if (postToUpdate.image.dataUrl) {
+            const imageUrl = await uploadImage(postToUpdate.image, post.id);
+            postToUpdate.image = imageUrl;
+        } else {
+            delete postToUpdate.image;
+        }
+        console.log(postToUpdate);
         await update(getPostRef(post.id), postToUpdate);
         dismiss();
         dismissLoader();
