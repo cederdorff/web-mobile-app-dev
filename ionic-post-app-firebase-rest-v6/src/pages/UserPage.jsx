@@ -11,7 +11,7 @@ import {
     IonToolbar,
     useIonViewWillEnter
 } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import PostListItem from "../components/PostCard";
 import UserCard from "../components/UserCard";
@@ -37,9 +37,9 @@ export default function UserPage() {
         setPosts(postsArray.reverse());
     }
 
-    useIonViewWillEnter(() => {
+    useEffect(() => {
         loadData();
-    });
+    }, []);
 
     return (
         <IonPage>
@@ -58,7 +58,7 @@ export default function UserPage() {
                         <IonLabel>{posts.length ? "Users Posts" : "No posts yet"}</IonLabel>
                     </IonListHeader>
                     {posts.map(post => (
-                        <PostListItem post={post} key={post.id} reload={loadData} />
+                        <PostListItem post={post} key={post.id} reload={useEffect} />
                     ))}
                 </IonList>
             </IonContent>
