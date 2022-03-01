@@ -58,7 +58,7 @@ export default function UserPage() {
                         <IonLabel>{posts.length ? "Users Posts" : "No posts yet"}</IonLabel>
                     </IonListHeader>
                     {posts.map(post => (
-                        <PostListItem post={post} key={post.id} reload={useEffect} />
+                        <PostListItem post={post} key={post.id} reload={loadData} />
                     ))}
                 </IonList>
             </IonContent>
