@@ -1,0 +1,7 @@
+{
+  "name": "ionic-push-notifications",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
