@@ -16,7 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Create database reference
-const database = getDatabase(app);
+export const database = getDatabase(app);
 // Reference to posts in Realtime DB
 export const postsRef = ref(database, "posts");
 // Reference to users in Realtime DB

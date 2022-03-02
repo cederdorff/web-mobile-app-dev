@@ -20,6 +20,7 @@ import PostUpdateModal from "./PostUpdateModal";
 import { remove } from "@firebase/database";
 import { getPostRef, storage } from "../firebase-config";
 import { ref, deleteObject } from "@firebase/storage";
+import { getAuth } from "firebase/auth";
 
 export default function PostListItem({ post }) {
     const [presentActionSheet] = useIonActionSheet();
@@ -28,6 +29,7 @@ export default function PostListItem({ post }) {
         <PostUpdateModal post={post} dismiss={handleDismissUpdateModal} />
     );
     const history = useHistory();
+    const currentUserId = getAuth().currentUser.uid;
 
     function showActionSheet(event) {
         event.preventDefault();
@@ -79,9 +81,11 @@ export default function PostListItem({ post }) {
                     <h2>{post.user.name}</h2>
                     <p>{post.user.title}</p>
                 </IonLabel>
-                <IonButton fill="clear" onClick={showActionSheet}>
-                    <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
-                </IonButton>
+                {post.uid == currentUserId && (
+                    <IonButton fill="clear" onClick={showActionSheet}>
+                        <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
+                    </IonButton>
+                )}
             </IonItem>
             <IonImg className="post-img" src={post.image} />
             <IonCardHeader>

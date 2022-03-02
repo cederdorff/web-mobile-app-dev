@@ -6,14 +6,16 @@ import { postsRef } from "../firebase-config";
 import { push, set } from "firebase/database";
 import { storage } from "../firebase-config";
 import { uploadString, ref, getDownloadURL } from "@firebase/storage";
+import { getAuth } from "firebase/auth";
 
 export default function AddPage() {
     const history = useHistory();
     const [showLoader, dismissLoader] = useIonLoading();
+    const auth = getAuth();
 
     async function handleSubmit(newPost) {
         showLoader();
-        newPost.uid = "4"; // default user id added
+        newPost.uid = auth.currentUser.uid; // default user id added
         const newPostRef = push(postsRef); // push new to get reference and new id/key
         const newPostKey = newPostRef.key; // key from reference
         const imageUrl = await uploadImage(newPost.image, newPostKey);
@@ -21,12 +23,11 @@ export default function AddPage() {
         await set(newPostRef, newPost);
 
         history.replace("/posts");
-
+        dismissLoader();
         await Toast.show({
             text: "New post created!",
             position: "center"
         });
-        dismissLoader();
     }
 
     async function uploadImage(imageFile, postKey) {
