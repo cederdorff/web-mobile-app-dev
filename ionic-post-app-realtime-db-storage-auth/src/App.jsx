@@ -57,7 +57,6 @@ function PrivateRoutes() {
                 <Route exact path="/profile">
                     <ProfilePage />
                 </Route>
-                <Route render={() => <Redirect to="/posts" />} />
             </IonRouterOutlet>
             <IonTabBar slot="bottom">
                 <IonTabButton tab="Posts" href="/posts">
@@ -86,7 +85,6 @@ function PublicRoutes() {
             <Route exact path="/signup">
                 <SignUpPage />
             </Route>
-            <Route render={() => <Redirect to="/signin" />} />
         </IonRouterOutlet>
     );
 }
@@ -112,7 +110,10 @@ export default function App() {
 
     return (
         <IonApp>
-            <IonReactRouter>{userIsAuthenticated ? <PrivateRoutes /> : <PublicRoutes />}</IonReactRouter>
+            <IonReactRouter>
+                {userIsAuthenticated ? <PrivateRoutes /> : <PublicRoutes />}
+                <Route>{userIsAuthenticated ? <Redirect to="/posts" /> : <Redirect to="/signin" />}</Route>
+            </IonReactRouter>
         </IonApp>
     );
 }
