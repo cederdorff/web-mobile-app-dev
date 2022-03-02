@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref } from "firebase/database";
 import { getStorage } from "firebase/storage";
+import { initializeAuth, indexedDBLocalPersistence } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -15,6 +16,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// Initialize auth
+export const auth = initializeAuth(app, {
+    persistence: indexedDBLocalPersistence
+});
 // Create database reference
 export const database = getDatabase(app);
 // Reference to posts in Realtime DB
