@@ -14,11 +14,11 @@ export default function PostsPage() {
             snapshot.forEach(postSnapshot => {
                 const id = postSnapshot.key;
                 const data = postSnapshot.val();
-                const post = {
+                const user = {
                     id,
                     ...data
                 };
-                usersArray.push(post);
+                usersArray.push(user);
             });
 
             return usersArray;
