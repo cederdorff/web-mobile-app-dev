@@ -8,8 +8,7 @@ import {
     IonListHeader,
     IonPage,
     IonTitle,
-    IonToolbar,
-    useIonViewWillEnter
+    IonToolbar
 } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -48,7 +47,7 @@ export default function UserPage() {
                     <IonButtons slot="start">
                         <IonBackButton text="Back" defaultHref="/posts"></IonBackButton>
                     </IonButtons>
-                    <IonTitle>{user.name}</IonTitle>
+                    <IonTitle>{user?.name ? user.name : "Unknown User Name"}</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>

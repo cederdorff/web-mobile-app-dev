@@ -14,15 +14,17 @@ export default function AddPage() {
             method: "POST",
             body: JSON.stringify(newPost)
         });
-        const data = await response.json();
-        console.log(data);
+        if (response.ok) {
+            history.replace("/posts");
 
-        history.replace("/posts");
-
-        await Toast.show({
-            text: "New post created!",
-            position: "center"
-        });
+            await Toast.show({
+                text: "New post created!"
+            });
+        } else {
+            await Toast.show({
+                text: "Error. Try again!"
+            });
+        }
     }
 
     return (
