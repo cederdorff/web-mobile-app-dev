@@ -20,6 +20,7 @@ import PostUpdateModal from "./PostUpdateModal";
 import { remove } from "@firebase/database";
 import { getPostRef, storage } from "../firebase-config";
 import { ref, deleteObject } from "@firebase/storage";
+import placeholder from "../assets/placeholder.png";
 
 export default function PostListItem({ post }) {
     const [presentActionSheet] = useIonActionSheet();
@@ -73,11 +74,11 @@ export default function PostListItem({ post }) {
         <IonCard>
             <IonItem lines="none">
                 <IonAvatar slot="start" onClick={goToUserDetailView}>
-                    <IonImg src={post.user.image} />
+                    <IonImg src={post.user?.image ? post.user.image : placeholder} />
                 </IonAvatar>
                 <IonLabel onClick={goToUserDetailView}>
-                    <h2>{post.user.name}</h2>
-                    <p>{post.user.title}</p>
+                    <h2>{post.user?.name ? post.user.name : "Unknown User Name"}</h2>
+                    <p>{post.user?.title ? post.user.title : "Unknown User Title"}</p>
                 </IonLabel>
                 <IonButton fill="clear" onClick={showActionSheet}>
                     <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
