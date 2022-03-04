@@ -42,6 +42,7 @@ export default function PostForm({ post, handleSubmit }) {
                     value={title}
                     placeholder="Type the title of your image"
                     onIonChange={e => setTitle(e.target.value)}
+                    required
                 />
             </IonItem>
             <IonItem>
@@ -49,7 +50,9 @@ export default function PostForm({ post, handleSubmit }) {
                 <IonTextarea
                     value={body}
                     placeholder="Tell us about your image"
-                    onIonChange={e => setBody(e.target.value)}></IonTextarea>
+                    onIonChange={e => setBody(e.target.value)}
+                    required
+                />
             </IonItem>
             <IonItem onClick={takePicture} lines="none">
                 <IonLabel>Choose Image</IonLabel>
@@ -60,9 +63,13 @@ export default function PostForm({ post, handleSubmit }) {
             {image && <IonImg className="ion-padding" src={image} onClick={takePicture} />}
 
             <div className="ion-padding">
-                <IonButton type="submit" expand="block">
-                    Save
-                </IonButton>
+                {image && title && body ? (
+                    <IonButton expand="block">Save</IonButton>
+                ) : (
+                    <IonButton type="submit" expand="block" disabled>
+                        Save
+                    </IonButton>
+                )}
             </div>
         </form>
     );
