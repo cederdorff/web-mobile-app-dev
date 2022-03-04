@@ -25,8 +25,8 @@ export default function PostsPage() {
 
     useEffect(() => {
         async function listenOnChange() {
-            const users = await getUsers();
             onValue(postsRef, async snapshot => {
+                const users = await getUsers();
                 const postsArray = [];
                 snapshot.forEach(postSnapshot => {
                     const id = postSnapshot.key;

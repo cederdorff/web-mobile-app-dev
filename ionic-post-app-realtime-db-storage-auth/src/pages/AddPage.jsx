@@ -20,14 +20,19 @@ export default function AddPage() {
         const newPostKey = newPostRef.key; // key from reference
         const imageUrl = await uploadImage(newPost.image, newPostKey);
         newPost.image = imageUrl;
-        await set(newPostRef, newPost);
-
-        history.replace("/posts");
-        dismissLoader();
-        await Toast.show({
-            text: "New post created!",
-            position: "center"
-        });
+        set(newPostRef, newPost)
+            .then(() => {
+                history.replace("/posts");
+                Toast.show({
+                    text: "New post created!"
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            .finally(() => {
+                dismissLoader();
+            });
     }
 
     async function uploadImage(imageFile, postKey) {

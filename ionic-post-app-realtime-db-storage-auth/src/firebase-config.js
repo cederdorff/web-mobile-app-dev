@@ -5,13 +5,13 @@ import { initializeAuth, indexedDBLocalPersistence } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDkrgquuXhFAgp67_qR6Ej2sBEQkocxXQ8",
-    authDomain: "race-rest.firebaseapp.com",
-    databaseURL: "https://race-rest-default-rtdb.firebaseio.com",
-    projectId: "race-rest",
-    storageBucket: "race-rest.appspot.com",
-    messagingSenderId: "836529600088",
-    appId: "1:836529600088:web:a7b2a4f07710f2458dfc2d"
+    apiKey: "AIzaSyCUGWll95dZS_q7WSmo3ocAsJJ7m_NYvBY",
+    authDomain: "ionic-post-app-race.firebaseapp.com",
+    databaseURL: "https://ionic-post-app-race-default-rtdb.firebaseio.com",
+    projectId: "ionic-post-app-race",
+    storageBucket: "ionic-post-app-race.appspot.com",
+    messagingSenderId: "984970303263",
+    appId: "1:984970303263:web:97296e01974e02bd19022a"
 };
 
 // Initialize Firebase
