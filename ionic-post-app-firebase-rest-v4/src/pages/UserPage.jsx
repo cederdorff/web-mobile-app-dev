@@ -29,9 +29,7 @@ export default function UserPage() {
     }
 
     async function loadUserPosts() {
-        const response = await fetch(
-            `https://race-rest-default-rtdb.firebaseio.com/posts.json?orderBy="uid"&startAt=${userId}&endAt=${userId}`
-        );
+        const response = await fetch(`https://race-rest-default-rtdb.firebaseio.com/posts.json?orderBy="uid"&equalTo="${userId}"`);
         const data = await response.json();
         const postsArray = Object.keys(data).map(key => ({ id: key, ...data[key] })); // from object to array
         setPosts(postsArray.reverse());
