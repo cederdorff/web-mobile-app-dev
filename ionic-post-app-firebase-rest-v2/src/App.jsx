@@ -32,15 +32,9 @@ export default function App() {
             <IonReactRouter>
                 <IonTabs>
                     <IonRouterOutlet>
-                        <Route exact path="/posts">
-                            <PostsPage />
-                        </Route>
-                        <Route exact path="/add">
-                            <AddPage />
-                        </Route>
-                        <Route exact path="/">
-                            <Redirect to="/posts" />
-                        </Route>
+                        <Route exact path="/posts" component={PostsPage} />
+                        <Route exact path="/add" component={AddPage} />
+                        <Redirect exact from="/" to="/posts" />
                     </IonRouterOutlet>
                     <IonTabBar slot="bottom">
                         <IonTabButton tab="Posts" href="/posts">
