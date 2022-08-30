@@ -9,7 +9,7 @@ export default function AddPage() {
     const history = useHistory();
 
     async function handleSubmit(newPost) {
-        newPost.uid = "4"; // default user id added
+        newPost.uid = "HYP5qsP3pYjrKppw5B7f"; // default user id added
 
         const newPostRef = push(postsRef);
         await set(newPostRef, newPost);
