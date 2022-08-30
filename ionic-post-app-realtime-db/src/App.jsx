@@ -1,14 +1,5 @@
 import { Redirect, Route } from "react-router-dom";
-import {
-    IonApp,
-    IonIcon,
-    IonLabel,
-    IonRouterOutlet,
-    IonTabBar,
-    IonTabButton,
-    IonTabs,
-    setupIonicReact
-} from "@ionic/react";
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { add, reader } from "ionicons/icons";
 import PostsPage from "./pages/PostsPage";
@@ -42,18 +33,10 @@ export default function App() {
             <IonReactRouter>
                 <IonTabs>
                     <IonRouterOutlet>
-                        <Route exact path="/posts">
-                            <PostsPage />
-                        </Route>
-                        <Route exact path="/add">
-                            <AddPage />
-                        </Route>
-                        <Route path="/users/:id">
-                            <UserPage />
-                        </Route>
-                        <Route exact path="/">
-                            <Redirect to="/posts" />
-                        </Route>
+                        <Route exact path="/posts" component={PostsPage} />
+                        <Route exact path="/add" component={AddPage} />
+                        <Route path="/users/:id" component={UserPage} />
+                        <Redirect exact from="/" to="/posts" />
                     </IonRouterOutlet>
                     <IonTabBar slot="bottom">
                         <IonTabButton tab="Posts" href="/posts">

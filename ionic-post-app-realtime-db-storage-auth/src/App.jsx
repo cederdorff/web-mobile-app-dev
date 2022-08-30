@@ -1,14 +1,5 @@
 import { Redirect, Route } from "react-router-dom";
-import {
-    IonApp,
-    IonIcon,
-    IonLabel,
-    IonRouterOutlet,
-    IonTabBar,
-    IonTabButton,
-    IonTabs,
-    setupIonicReact
-} from "@ionic/react";
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { add, person, reader } from "ionicons/icons";
 import PostsPage from "./pages/PostsPage";
@@ -45,18 +36,11 @@ function PrivateRoutes() {
     return (
         <IonTabs>
             <IonRouterOutlet>
-                <Route exact path="/posts">
-                    <PostsPage />
-                </Route>
-                <Route exact path="/add">
-                    <AddPage />
-                </Route>
-                <Route path="/users/:id">
-                    <UserPage />
-                </Route>
-                <Route exact path="/profile">
-                    <ProfilePage />
-                </Route>
+                <Route exact path="/posts" component={PostsPage} />
+                <Route exact path="/add" component={AddPage} />
+                <Route path="/users/:id" component={UserPage} />
+                <Route exact path="/profile" component={ProfilePage} />
+                <Redirect exact from="/" to="/posts" />
             </IonRouterOutlet>
             <IonTabBar slot="bottom">
                 <IonTabButton tab="Posts" href="/posts">
@@ -79,12 +63,8 @@ function PrivateRoutes() {
 function PublicRoutes() {
     return (
         <IonRouterOutlet>
-            <Route exact path="/signin">
-                <SignInPage />
-            </Route>
-            <Route exact path="/signup">
-                <SignUpPage />
-            </Route>
+            <Route exact path="/signin" component={SignInPage} />
+            <Route exact path="/signup" component={SignUpPage} />
         </IonRouterOutlet>
     );
 }
