@@ -1,7 +1,0 @@
-{
-  "name": "post-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
