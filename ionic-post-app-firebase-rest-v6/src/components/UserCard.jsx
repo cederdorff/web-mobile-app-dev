@@ -1,14 +1,5 @@
-import {
-    IonCard,
-    IonImg,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonItem,
-    IonIcon,
-    IonLabel
-} from "@ionic/react";
-import { mail, phonePortraitSharp, globe } from "ionicons/icons";
+import { IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonIcon, IonImg, IonItem, IonLabel } from "@ionic/react";
+import { globe, mail, phonePortraitSharp } from "ionicons/icons";
 import placeholder from "../assets/placeholder.png";
 
 export default function UserCard({ user }) {

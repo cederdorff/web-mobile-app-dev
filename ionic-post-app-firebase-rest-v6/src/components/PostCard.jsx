@@ -1,23 +1,20 @@
+import { Toast } from "@capacitor/toast";
 import {
+    IonButton,
     IonCard,
     IonCardContent,
     IonCardHeader,
     IonCardTitle,
+    IonIcon,
     IonImg,
     IonItem,
-    IonButton,
-    IonIcon,
-    useIonAlert,
     useIonActionSheet,
-    useIonModal,
-    IonAvatar,
-    IonLabel
+    useIonAlert,
+    useIonModal
 } from "@ionic/react";
 import { ellipsisHorizontalOutline } from "ionicons/icons";
-import { useHistory } from "react-router-dom";
-import { Toast } from "@capacitor/toast";
 import PostUpdateModal from "./PostUpdateModal";
-import placeholder from "../assets/placeholder.png";
+import UserAvatar from "./UserAvatar";
 
 export default function PostListItem({ post, reload }) {
     const [presentActionSheet] = useIonActionSheet();
@@ -25,7 +22,6 @@ export default function PostListItem({ post, reload }) {
     const [presentUpdateModal, dismissUpdateModal] = useIonModal(
         <PostUpdateModal post={post} dismiss={handleDismissUpdateModal} reloadEvent={reload} />
     );
-    const history = useHistory();
 
     function showActionSheet(event) {
         event.preventDefault();
@@ -65,20 +61,10 @@ export default function PostListItem({ post, reload }) {
         });
     }
 
-    function goToUserDetailView() {
-        history.push(`users/${post.uid}`);
-    }
-
     return (
         <IonCard>
             <IonItem lines="none">
-                <IonAvatar slot="start" onClick={goToUserDetailView}>
-                    <IonImg src={post.user?.image ? post.user.image : placeholder} />
-                </IonAvatar>
-                <IonLabel onClick={goToUserDetailView}>
-                    <h2>{post.user?.name ? post.user.name : "Unknown User Name"}</h2>
-                    <p>{post.user?.title ? post.user.title : "Unknown User Title"}</p>
-                </IonLabel>
+                <UserAvatar uid={post.uid} />
                 <IonButton fill="clear" onClick={showActionSheet}>
                     <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
                 </IonButton>

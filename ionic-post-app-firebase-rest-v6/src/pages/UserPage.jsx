@@ -1,5 +1,17 @@
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonLabel, IonList, IonListHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
-import { useEffect, useState } from "react";
+import {
+    IonBackButton,
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonLabel,
+    IonList,
+    IonListHeader,
+    IonPage,
+    IonTitle,
+    IonToolbar,
+    useIonViewWillEnter
+} from "@ionic/react";
+import { useState } from "react";
 import { useParams } from "react-router";
 import PostListItem from "../components/PostCard";
 import UserCard from "../components/UserCard";
@@ -19,13 +31,13 @@ export default function UserPage() {
         // fetch posts where uid is equal to userId prop
         const postsRes = await fetch(`https://race-rest-default-rtdb.firebaseio.com/posts.json?orderBy="uid"&equalTo="${userId}"`);
         const postsData = await postsRes.json();
-        const postsArray = Object.keys(postsData).map(key => ({ id: key, ...postsData[key], user: userData })); // from object to array
+        const postsArray = Object.keys(postsData).map(key => ({ id: key, ...postsData[key] })); // from object to array
         setPosts(postsArray.reverse());
     }
 
-    useEffect(() => {
+    useIonViewWillEnter(() => {
         loadData();
-    }, []);
+    });
 
     return (
         <IonPage>

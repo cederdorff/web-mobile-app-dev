@@ -17,32 +17,13 @@ export default function PostsPage() {
     const [posts, setPosts] = useState([]);
     const [showLoader, dismissLoader] = useIonLoading();
 
-    async function getPosts() {
+    async function loadPosts() {
+        showLoader();
         const response = await fetch("https://race-rest-default-rtdb.firebaseio.com/posts.json");
         const data = await response.json();
         // map object into an array with objects
         const postsArray = Object.keys(data).map(key => ({ id: key, ...data[key] }));
-        return postsArray;
-    }
-
-    async function getUsers() {
-        const response = await fetch("https://race-rest-default-rtdb.firebaseio.com/users.json");
-        const data = await response.json();
-        // mapp object into an array with objects
-        const users = Object.keys(data).map(key => ({ id: key, ...data[key] }));
-        return users;
-    }
-
-    async function loadPosts() {
-        showLoader();
-        const postsArray = await getPosts();
-        const users = await getUsers();
-        const postsWithUser = postsArray.map(post => {
-            const user = users.find(user => user.id === post.uid);
-            post = { ...post, user: user }; // combine objects with spread operator
-            return post;
-        });
-        setPosts(postsWithUser.reverse());
+        setPosts(postsArray.reverse());
         dismissLoader();
     }
 
