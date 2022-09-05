@@ -59,7 +59,7 @@ export default function PostListItem({ post, reload }) {
                 <UserDetail userId={post.uid} />
                 <IonButton fill="clear" onClick={showActionSheet}>
                     <IonIcon slot="icon-only" icon={ellipsisHorizontalOutline} />
-                </IonButton>{" "}
+                </IonButton>
             </IonItem>
 
             <IonImg className="post-img" src={post.image} />
