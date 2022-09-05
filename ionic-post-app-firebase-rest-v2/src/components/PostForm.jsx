@@ -40,7 +40,7 @@ export default function PostForm({ post, handleSubmit }) {
                 <IonImg className="ion-padding" src={image === "" ? fallbackUrl : image} />
             </IonItem>
             <IonButton type="submit" expand="block">
-                Create
+                Save
             </IonButton>
         </form>
     );
