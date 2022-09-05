@@ -60,7 +60,7 @@ export default function PostForm({ post, handleSubmit }) {
             />
 
             <IonButton type="submit" expand="block" className="ion-padding">
-                Create
+                Save
             </IonButton>
         </form>
     );

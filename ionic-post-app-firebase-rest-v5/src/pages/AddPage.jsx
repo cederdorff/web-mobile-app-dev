@@ -7,7 +7,7 @@ export default function AddPage() {
     const history = useHistory();
 
     async function handleSubmit(newPost) {
-        newPost.uid = "HYP5qsP3pYjrKppw5B7f"; // default user id added
+        newPost.uid = "fTs84KRoYw5pRZEWCq2Z"; // default user id added
 
         const url = "https://race-rest-default-rtdb.firebaseio.com/posts.json";
         const response = await fetch(url, {

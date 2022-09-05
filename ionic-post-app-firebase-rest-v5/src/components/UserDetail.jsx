@@ -1,11 +1,19 @@
 import { IonLabel, IonAvatar, IonImg } from "@ionic/react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export default function UserDetail({ user }) {
+export default function UserDetail({ uid }) {
+    const [user, setUser] = useState({});
     const history = useHistory();
 
+    useEffect(() => {
+        fetch(`https://race-rest-default-rtdb.firebaseio.com/users/${uid}.json`)
+            .then(response => response.json())
+            .then(data => setUser(data));
+    }, [uid]);
+
     function goToUserDetailView() {
-        history.push(`users/${user.id}`);
+        history.push(`users/${uid}`);
     }
 
     return (
