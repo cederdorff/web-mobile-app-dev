@@ -31,9 +31,6 @@ export default function PostListItem({ post, reload }) {
             ]
         });
     }
-    function showUpdateModal() {
-        presentUpdateModal();
-    }
 
     function closeUpdateModal() {
         dismissUpdateModal();
