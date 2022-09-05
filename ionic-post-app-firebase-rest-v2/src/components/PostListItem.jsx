@@ -25,7 +25,7 @@ export default function PostListItem({ post, reload }) {
         event.preventDefault();
         presentActionSheet({
             buttons: [
-                { text: "Edit", handler: showUpdateModal },
+                { text: "Edit", handler: presentUpdateModal },
                 { text: "Delete", role: "destructive", handler: showDeleteDialog },
                 { text: "Cancel", role: "cancel" }
             ]
