@@ -1,5 +1,14 @@
 {
     "posts": {
+        "4hNVXMNbZfgsiaTFsXw": {
+            "url": "https://vanillajspodcast.com/",
+            "title": "The Vanilla JavaScript Podcast",
+            "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/f8/a1/82/f8a18223-b051-8ce3-5980-828084726036/mza_15805003249133626942.jpg/1200x1200bb.jpg",
+            "description": "A show about JavaScript for people who hate the complexity of modern front‑end web development, hosted by Chris Ferdinandi 🎉",
+            "duration": 9,
+            "category": "Podcast",
+            "createdBy": "fjpRTRTjZHwrq3tTLHri"
+        },
         "1mNVXMNbZfgsiaTFsDw": {
             "url": "https://howhttps.works/why-do-we-need-https/",
             "title": "How HTTPS works or not",
