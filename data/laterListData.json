@@ -7,6 +7,7 @@
             "description": "A show about JavaScript for people who hate the complexity of modern front‑end web development, hosted by Chris Ferdinandi 🎉",
             "duration": 9,
             "category": "Podcast",
+            "createdAt": 1664282808686,
             "createdBy": "fjpRTRTjZHwrq3tTLHri"
         },
         "1mNVXMNbZfgsiaTFsDw": {
@@ -16,6 +17,7 @@
             "description": "🙀 A cat explains how HTTPS works...in a comic! 😻",
             "duration": 5,
             "category": "Article",
+            "createdAt": 1664282808686,
             "createdBy": "WKjy6B8IfDJxIsBbyxEe"
         },
         "fghVXMNbZfgsiaTF888": {
@@ -25,24 +27,27 @@
             "description": "Apple has had to shift gears due to the slowing pace of iPhone chip development.",
             "duration": 14,
             "category": "Article",
+            "createdAt": 1664282808680,
             "createdBy": "ZfPTVEMQKf9vhNiUh0bj"
         },
         "cfgh9MNbZfgsiaTFsDw": {
             "url": "https://www.linkedin.com/learning/json-essential-training/understand-objects-in-programming?autoplay=true&u=68595258",
             "title": "Understand objects in programming - JavaScript Video Tutorial | LinkedIn Learning, formerly Lynda.com",
-            "image": "https://media-exp1.licdn.com/dms/image/C560DAQEXmiSIYftM5Q/learning-public-crop_675_1200/0/1629482233685?e=1663880400&v=beta&t=VBOU6TBfaYKIzwf20mUye-E61apFNLVWpkNEF0Pp3_g",
+            "image": "https://i.ytimg.com/vi/4vyxVhaQSxo/maxresdefault.jpg",
             "description": "JSON syntax is derived from objects, which are a structure common to many programming languages. In this video, learn what an object is and the format it uses to store data.",
             "duration": 5,
             "category": "Video",
+            "createdAt": 1664282808650,
             "createdBy": "fjpRTRTjZHwrq3tTLHri"
         },
         "3mNVXMJbZfgsia44444": {
             "url": "https://www.linkedin.com/learning/json-essential-training/what-is-json?autoplay=true&u=68595258",
             "title": "What is JSON? - JavaScript Video Tutorial | LinkedIn Learning, formerly Lynda.com",
-            "image": "https://media-exp1.licdn.com/dms/image/C560DAQEXmiSIYftM5Q/learning-public-crop_675_1200/0/1629482233685?e=1663880400&v=beta&t=VBOU6TBfaYKIzwf20mUye-E61apFNLVWpkNEF0Pp3_g",
+            "image": "https://i.ytimg.com/vi/uw_rP5bV9r0/maxresdefault.jpg",
             "description": "JSON is widely used in programming and the modern web to exchange data. In this video, learn the advantages of using JSON and why it's so widely used.",
             "duration": 2,
             "category": "Video",
+            "createdAt": 1664282808650,
             "createdBy": "pqzGY1MnHYm3I4Ca79Xn"
         },
         "JJ55XMNbZfgsiaTFsQQ": {
@@ -52,6 +57,7 @@
             "description": "Kudoe Logo Design designed by Dmitry Lepisov for Lepisov Branding. Connect with them on Dribbble; the global community for designers and creative professionals.",
             "duration": 2,
             "category": "Inspiration",
+            "createdAt": 1660282808650,
             "createdBy": "vnH85C4TbGnSTnylYf8I"
         },
         "tgjR458bZfgsiaTFsVS": {
@@ -61,6 +67,7 @@
             "description": "Logo concept for AI fitness app pt.2 designed by Vadim Carazan - Logo design for Carazan Brands. Connect with them on Dribbble; the global community for designers and creative professionals.",
             "duration": 4,
             "category": "Inspiration",
+            "createdAt": 1664202808650,
             "createdBy": "HlvRHr58C05guOLl64k5"
         },
         "8H0oH1WlDNfqyZAehXe4": {
@@ -70,6 +77,7 @@
             "description": "Scraper for oEmbed, Twitter Cards and Open Graph metadata - fast and Promise-based. Latest version: 5.7.0, last published: 4 months ago. Start using unfurl.js in your project by running `npm i unfurl.js`. There are 14 other projects in the npm registry using unfurl.js.",
             "duration": 9,
             "category": "Article",
+            "createdAt": 1664280008650,
             "createdBy": "HlvRHr58C05guOLl64k5"
         },
         "7yHtqIcc25e4kzMInds3": {
@@ -79,6 +87,7 @@
             "description": "Automated auditing, performance metrics, and best practices for the web. - GitHub - GoogleChrome/lighthouse: Automated auditing, performance metrics, and best practices for the web.",
             "duration": 8,
             "category": "Article",
+            "createdAt": 1664282808650,
             "createdBy": "fjpRTRTjZHwrq3tTLHri"
         },
         "D3xo03oPgyOfpr3i3x7D": {
@@ -88,6 +97,7 @@
             "description": "Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS.",
             "duration": 7,
             "category": "Inspiration",
+            "createdAt": 1664282808650,
             "createdBy": "fTs84KRoYw5pRZEWCq2Z"
         },
         "HHOTmUwCWGxN9jp4hQcH": {
@@ -97,6 +107,7 @@
             "description": "Automated auditing, performance metrics, and best practices for the web. - GitHub - GoogleChrome/lighthouse: Automated auditing, performance metrics, and best practices for the web.",
             "duration": 10,
             "category": "Article",
+            "createdAt": 1664282808650,
             "createdBy": "AlOr0n80qPLrqA0vJl48"
         }
     },
